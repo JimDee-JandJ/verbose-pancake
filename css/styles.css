@@ -93,6 +93,7 @@ a { color: inherit; text-decoration: none; }
 }
 .nav-links a { color: rgba(255,255,255,0.82); transition: color .2s; }
 .nav-links a:hover { color: var(--green); }
+.nav-links a[aria-current="page"] { color: var(--green); }
 .nav-links .nav-cta {
   border: 1px solid var(--green);
   color: var(--green);
@@ -265,53 +266,26 @@ a { color: inherit; text-decoration: none; }
   align-items: flex-end;
   color: var(--white);
 }
-.hero-photo .caption {
+.welcome-cta {
   position: absolute;
   left: var(--section-pad);
-  bottom: 1.5rem;
-  font-size: 0.72rem;
-  font-family: var(--font-mono);
-  opacity: 0.8;
-  max-width: 40ch;
-  margin: 0;
+  bottom: 3.5rem;
+  color: var(--white);
+  line-height: 0.95;
 }
-.building-badge {
-  background: var(--white);
-  color: var(--black);
-  margin: clamp(1.5rem, 5vw, 3.5rem);
-  padding: 1.5rem 2rem;
-  max-width: 420px;
+.welcome-cta .top-word {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.3rem, 2.6vw, 2rem);
 }
-.building-badge h2 {
+.welcome-cta .bottom-word {
+  display: block;
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(2.2rem, 4.4vw, 3.4rem);
-  margin: 0 0 0.4rem;
-  letter-spacing: -0.02em;
+  font-size: clamp(2rem, 4.4vw, 3.4rem);
+  color: var(--green);
 }
-.building-badge p { margin: 0; font-size: 0.95rem; line-height: 1.4; }
-
-.location-map-section { align-items: flex-start; }
-.map-badges {
-  margin: clamp(1.5rem, 5vw, 3.5rem);
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  margin-top: auto;
-  margin-bottom: clamp(1.5rem, 5vw, 3.5rem);
-}
-.location-map-section { display: flex; align-items: flex-end; }
-.badge-green, .badge-black {
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  padding: 0.6rem 1rem;
-  width: fit-content;
-}
-.badge-green { background: var(--green); color: var(--black); }
-.badge-black { background: var(--black); color: var(--white); }
-
-.closing-cta { align-items: center; justify-content: flex-start; padding-left: var(--section-pad); }
-.closing-cta .display { color: var(--white); }
 
 /* ============================================================
    Split panel (photo + copy)
@@ -558,11 +532,33 @@ a { color: inherit; text-decoration: none; }
     background-repeat: no-repeat;
     background-color: var(--black);
   }
-  .closing-cta, .location-map-section { aspect-ratio: 3 / 4; }
+  .location-map-section { aspect-ratio: 3 / 4; }
 }
 
 @media (max-width: 560px) {
   .spec-grid { grid-template-columns: 1fr 1fr; }
   .occupiers-grid { grid-template-columns: repeat(2, 1fr); }
   .badge-landid { width: 52px; height: 52px; font-size: 0.7rem; }
+}
+
+/* ============================================================
+   Mini footer (Home / Spaces / Place pages)
+   ============================================================ */
+.mini-footer { background: var(--black); color: rgba(255,255,255,0.6); padding: 2rem 0; }
+.mini-footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.mini-footer-links { display: flex; gap: 1.5rem; }
+.mini-footer-links a { color: rgba(255,255,255,0.6); transition: color .2s; }
+.mini-footer-links a:hover, .mini-footer-links a[aria-current="page"] { color: var(--green); }
+@media (max-width: 560px) {
+  .mini-footer-inner { flex-direction: column; align-items: flex-start; }
 }
