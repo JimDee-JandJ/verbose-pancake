@@ -10,8 +10,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
+<noscript><style>
+  .spec-grid .spec-item, .occupiers-grid > figure, .kinetic-words .kw { opacity: 1 !important; transform: none !important; }
+</style></noscript>
 </head>
 <body>
+<div class="scroll-progress" id="scrollProgress"></div>
 
 <!-- ================= NAV ================= -->
 <header class="site-nav" id="siteNav">
@@ -27,7 +31,7 @@
       <a href="index.html">Home</a>
       <a href="spaces.html">Spaces</a>
       <a href="place.html">Place</a>
-      <a href="contact.html" class="nav-cta" aria-current="page">Contact</a>
+      <a href="contact.html" class="nav-cta magnetic" aria-current="page">Contact</a>
     </nav>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -38,7 +42,7 @@
 <main id="top">
 
 <!-- ================= CONTACT / FOOTER ================= -->
-<footer class="section contact-footer" id="contact">
+<footer class="section contact-footer spotlight-zone" id="contact">
   <div class="wrap">
     <div class="contact-top">
       <div>
@@ -100,5 +104,6 @@
 </main>
 
 <script src="js/main.js"></script>
+<script src="js/effects.js"></script>
 </body>
 </html>

@@ -10,8 +10,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
+<noscript><style>
+  .spec-grid .spec-item, .occupiers-grid > figure, .kinetic-words .kw { opacity: 1 !important; transform: none !important; }
+</style></noscript>
 </head>
 <body>
+<div class="scroll-progress" id="scrollProgress"></div>
 
 <!-- ================= NAV ================= -->
 <header class="site-nav" id="siteNav">
@@ -27,7 +31,7 @@
       <a href="index.html" aria-current="page">Home</a>
       <a href="spaces.html">Spaces</a>
       <a href="place.html">Place</a>
-      <a href="contact.html" class="nav-cta">Contact</a>
+      <a href="contact.html" class="nav-cta magnetic">Contact</a>
     </nav>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -38,7 +42,12 @@
 <main id="top">
 
 <!-- ================= COVER ================= -->
-<section class="section cover" id="cover">
+<section class="section cover spotlight-zone" id="cover">
+  <video class="cover-video" autoplay muted loop playsinline preload="auto" poster="assets/video/hero-loop-poster.jpg" aria-hidden="true">
+    <source src="assets/video/hero-loop.webm" type="video/webm">
+    <source src="assets/video/hero-loop.mp4" type="video/mp4">
+  </video>
+  <div class="cover-scrim" aria-hidden="true"></div>
   <div class="cover-top reveal-fade">
     <span class="wordmark-lg">horizon</span>
     <span class="wordmark-lg">oxford</span>
@@ -57,7 +66,7 @@
       <span class="tag">10,141 — 82,613 SQ FT</span>
       <span class="tag">OX29 4TP</span>
     </div>
-    <a class="badge-landid" href="https://landid.co.uk" target="_blank" rel="noopener">Landid</a>
+    <a class="badge-landid magnetic" href="https://landid.co.uk" target="_blank" rel="noopener">Landid</a>
   </div>
   <a class="scroll-cue" href="#overview" aria-label="Scroll to content"><span></span></a>
 </section>
@@ -65,10 +74,10 @@
 <!-- ================= INTRO ================= -->
 <section class="section intro" id="overview">
   <div class="wrap">
-    <h1 class="display">empty boxes <span class="accent">soon to be filled</span><br><span class="accent">with</span> incredible ideas.</h1>
+    <h1 class="display kinetic-words"><span class="kw" style="--i:0">empty</span> <span class="kw" style="--i:1">boxes</span> <span class="accent"><span class="kw" style="--i:2">soon</span> <span class="kw" style="--i:3">to</span> <span class="kw" style="--i:4">be</span> <span class="kw" style="--i:5">filled</span></span><br><span class="accent"><span class="kw" style="--i:6">with</span></span> <span class="kw" style="--i:7">incredible</span> <span class="kw" style="--i:8">ideas.</span></h1>
     <div class="intro-foot">
       <p class="lede">Horizon is a collection of five high-specification, future-proofed mid-tech / industrial spaces across three new buildings.</p>
-      <p class="stat-line"><strong>Space from 10,141 — 82,613 sq ft</strong><br>Available Q4 2027</p>
+      <p class="stat-line"><strong>Space from <span class="count-up" data-value="10141">10,141</span> — <span class="count-up" data-value="82613">82,613</span> sq ft</strong><br>Available Q4 2027</p>
     </div>
   </div>
 </section>
@@ -117,5 +126,6 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script src="js/effects.js"></script>
 </body>
 </html>
