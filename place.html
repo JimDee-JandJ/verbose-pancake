@@ -10,8 +10,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
+<noscript><style>
+  .spec-grid .spec-item, .occupiers-grid > figure, .kinetic-words .kw { opacity: 1 !important; transform: none !important; }
+</style></noscript>
 </head>
 <body>
+<div class="scroll-progress" id="scrollProgress"></div>
 
 <!-- ================= NAV ================= -->
 <header class="site-nav" id="siteNav">
@@ -27,7 +31,7 @@
       <a href="index.html">Home</a>
       <a href="spaces.html">Spaces</a>
       <a href="place.html" aria-current="page">Place</a>
-      <a href="contact.html" class="nav-cta">Contact</a>
+      <a href="contact.html" class="nav-cta magnetic">Contact</a>
     </nav>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -49,7 +53,7 @@
 </section>
 
 <!-- ================= LOCAL OCCUPIERS ================= -->
-<section class="section black-panel occupiers-panel">
+<section class="section black-panel occupiers-panel spotlight-zone">
   <div class="occupiers-grid">
     <figure><img src="assets/images/occupier-polar-technology.jpg" alt="Polar Technology" loading="lazy"><figcaption>Polar Technology</figcaption></figure>
     <figure><img src="assets/images/occupier-lentus-composites.jpg" alt="Lentus Composites" loading="lazy"><figcaption>Lentus Composites</figcaption></figure>
@@ -80,15 +84,15 @@
         <div>
           <h3 class="small-label">Driving from Horizon Oxford (OX29 4TP)</h3>
           <ul class="travel-list">
-            <li><span>Witney</span><span>6 miles</span></li>
-            <li><span>Oxford</span><span>9 miles</span></li>
-            <li><span>Abingdon</span><span>10 miles</span></li>
-            <li><span>Bicester</span><span>15 miles</span></li>
-            <li><span>Swindon</span><span>28 miles</span></li>
-            <li><span>London Heathrow</span><span>51 miles</span></li>
-            <li><span>Central London</span><span>63 miles</span></li>
-            <li><span>Birmingham</span><span>73 miles</span></li>
-            <li><span>Cambridge</span><span>103 miles</span></li>
+            <li><span>Witney</span><span><span class="count-up" data-value="6">6</span> miles</span></li>
+            <li><span>Oxford</span><span><span class="count-up" data-value="9">9</span> miles</span></li>
+            <li><span>Abingdon</span><span><span class="count-up" data-value="10">10</span> miles</span></li>
+            <li><span>Bicester</span><span><span class="count-up" data-value="15">15</span> miles</span></li>
+            <li><span>Swindon</span><span><span class="count-up" data-value="28">28</span> miles</span></li>
+            <li><span>London Heathrow</span><span><span class="count-up" data-value="51">51</span> miles</span></li>
+            <li><span>Central London</span><span><span class="count-up" data-value="63">63</span> miles</span></li>
+            <li><span>Birmingham</span><span><span class="count-up" data-value="73">73</span> miles</span></li>
+            <li><span>Cambridge</span><span><span class="count-up" data-value="103">103</span> miles</span></li>
           </ul>
         </div>
         <div>
@@ -162,5 +166,6 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script src="js/effects.js"></script>
 </body>
 </html>

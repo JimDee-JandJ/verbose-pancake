@@ -10,8 +10,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
+<noscript><style>
+  .spec-grid .spec-item, .occupiers-grid > figure, .kinetic-words .kw { opacity: 1 !important; transform: none !important; }
+</style></noscript>
 </head>
 <body>
+<div class="scroll-progress" id="scrollProgress"></div>
 
 <!-- ================= NAV ================= -->
 <header class="site-nav" id="siteNav">
@@ -27,7 +31,7 @@
       <a href="index.html">Home</a>
       <a href="spaces.html" aria-current="page">Spaces</a>
       <a href="place.html">Place</a>
-      <a href="contact.html" class="nav-cta">Contact</a>
+      <a href="contact.html" class="nav-cta magnetic">Contact</a>
     </nav>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -43,7 +47,7 @@
 </section>
 
 <!-- ================= SITE PLAN ================= -->
-<section class="section black-panel" id="site-plan">
+<section class="section black-panel spotlight-zone" id="site-plan">
   <div class="wrap two-col">
     <div class="col-media">
       <img src="assets/images/site-plan.jpg" alt="Site plan of Horizon Oxford showing Buildings A, B and C, car parking, Polar Technology and access roads">
@@ -56,7 +60,7 @@
           <tr><td>Building A</td><td>32,372–36,435</td><td>3,007.5–3,384.9</td></tr>
           <tr><td>Building B</td><td>24,226–28,369</td><td>2,250.7–2,635.6</td></tr>
           <tr><td>Building C</td><td>14,680–17,809</td><td>1,468.0–1,780.9</td></tr>
-          <tr class="total"><td>Total</td><td>71,278–82,613</td><td>6,622.0–7,675.0</td></tr>
+          <tr class="total"><td>Total</td><td><span class="count-up" data-value="71278">71,278</span>–<span class="count-up" data-value="82613">82,613</span></td><td>6,622.0–7,675.0</td></tr>
         </tbody>
       </table>
     </div>
@@ -119,7 +123,7 @@
   <h2 class="sr-only">Building A — A1 &amp; A2, 16,176 sq ft — 36,435 sq ft. CGI: Building A external. For indicative purposes only.</h2>
   <span class="page-tag">Building A — A1&amp;A2</span>
 </section>
-<section class="section black-panel floorplan-panel">
+<section class="section black-panel floorplan-panel spotlight-zone">
   <div class="wrap two-col">
     <div class="col-copy">
       <div class="fp-badge">
@@ -147,7 +151,7 @@
   <h2 class="sr-only">Building B — B1 &amp; B2, 10,141 sq ft — 28,369 sq ft. CGI: Building B external. For indicative purposes only.</h2>
   <span class="page-tag">Building B — B1&amp;B2</span>
 </section>
-<section class="section black-panel floorplan-panel">
+<section class="section black-panel floorplan-panel spotlight-zone">
   <div class="wrap two-col">
     <div class="col-copy">
       <div class="fp-badge">
@@ -175,7 +179,7 @@
   <h2 class="sr-only">Building C — C1, 14,680 sq ft — 17,809 sq ft. CGI: Building C external. For indicative purposes only.</h2>
   <span class="page-tag">Building C</span>
 </section>
-<section class="section black-panel floorplan-panel">
+<section class="section black-panel floorplan-panel spotlight-zone">
   <div class="wrap two-col">
     <div class="col-copy">
       <div class="fp-badge">
@@ -201,7 +205,7 @@
 </div>
 
 <!-- ================= SPECIFICATION ================= -->
-<section class="section black-panel spec-panel" id="specification">
+<section class="section black-panel spec-panel spotlight-zone" id="specification">
   <div class="wrap">
     <div class="spec-grid">
 
@@ -240,16 +244,16 @@
       </div>
       <div class="spec-item">
         <svg viewBox="0 0 40 40"><line x1="4" y1="8" x2="4" y2="32" class="accent-stroke"/><line x1="12" y1="8" x2="12" y2="32"/><line x1="20" y1="8" x2="20" y2="32"/><line x1="28" y1="8" x2="28" y2="32"/><line x1="36" y1="8" x2="36" y2="32"/></svg>
-        <p>271 car parking spaces</p>
+        <p><span class="count-up" data-value="271">271</span> car parking spaces</p>
       </div>
       <div class="spec-item">
         <svg viewBox="0 0 40 40"><path d="M22 3 L10 22 L19 22 L16 37 L31 16 L21 16 Z" class="accent-stroke"/></svg>
-        <p>71 'active' EV charging spaces (future provision: 168)</p>
+        <p><span class="count-up" data-value="71">71</span> 'active' EV charging spaces (future provision: 168)</p>
       </div>
 
       <div class="spec-item">
         <svg viewBox="0 0 40 40"><circle cx="10" cy="28" r="7" class="accent-stroke"/><circle cx="30" cy="28" r="7"/></svg>
-        <p>216 covered cycle storage spaces with green roofs to benefit biodiversity</p>
+        <p><span class="count-up" data-value="216">216</span> covered cycle storage spaces with green roofs to benefit biodiversity</p>
       </div>
       <div class="spec-item">
         <svg viewBox="0 0 40 40"><path d="M20 4 L20 18" class="accent-stroke"/><path d="M10 18 L30 18 L34 36 L6 36 Z"/></svg>
@@ -294,5 +298,6 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script src="js/effects.js"></script>
 </body>
 </html>
