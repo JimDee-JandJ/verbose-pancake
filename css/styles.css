@@ -199,7 +199,36 @@ a { color: inherit; text-decoration: none; }
   justify-content: center;
   min-height: 30vh;
 }
-.cover-mark svg { width: clamp(120px, 16vw, 220px); height: auto; }
+.cover-mark svg { width: clamp(120px, 16vw, 220px); height: auto; overflow: visible; }
+
+/* Logo reveal animation: bars draw in, diagonals shoot out from the
+   crossbar point, then the wordmark/meta fade in — matches the brand's
+   video sting. */
+.mark-bar {
+  transform: scaleX(0);
+  animation: mark-bar-in 0.5s cubic-bezier(.2,.8,.2,1) 0.1s forwards;
+}
+.mark-bar-l { transform-origin: 20.5px 68px; }
+.mark-bar-r { transform-origin: 80px 68px; }
+.mark-diag {
+  transform: scaleY(0);
+  animation: mark-diag-in 0.6s cubic-bezier(.2,.8,.2,1) 0.45s forwards;
+}
+.mark-diag-l { transform-origin: 29px 68px; }
+.mark-diag-r { transform-origin: 65px 68px; }
+@keyframes mark-bar-in { to { transform: scaleX(1); } }
+@keyframes mark-diag-in { to { transform: scaleY(1); } }
+
+.reveal-fade {
+  opacity: 0;
+  animation: reveal-fade-in 0.7s ease-out 1.05s forwards;
+}
+@keyframes reveal-fade-in { to { opacity: 1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .mark-bar, .mark-diag, .reveal-fade { animation: none; transform: none; opacity: 1; }
+}
+
 .cover-bottom {
   display: flex;
   align-items: flex-end;
