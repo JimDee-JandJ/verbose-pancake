@@ -91,16 +91,16 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
-.nav-links a { color: rgba(255,255,255,0.82); transition: color .2s; }
-.nav-links a:hover { color: var(--green); }
-.nav-links a[aria-current="page"] { color: var(--green); }
-.nav-links .nav-cta {
-  border: 1px solid var(--green);
-  color: var(--green);
+.nav-links a {
+  color: rgba(255,255,255,0.82);
   padding: 0.5rem 1rem;
+  border: 1px solid transparent;
   border-radius: 999px;
+  transition: color .2s, border-color .2s, background .2s;
 }
-.nav-links .nav-cta:hover { background: var(--green); color: var(--black); }
+.nav-links a:hover { color: var(--green); border-color: rgba(74,255,28,0.4); }
+.nav-links a[aria-current="page"] { color: var(--green); border-color: var(--green); }
+.nav-links a[aria-current="page"]:hover { background: var(--green); color: var(--black); }
 .nav-toggle {
   display: none;
   flex-direction: column;
@@ -221,23 +221,17 @@ a { color: inherit; text-decoration: none; }
 }
 .cover-mark svg { width: clamp(120px, 16vw, 220px); height: auto; overflow: visible; }
 
-/* Logo reveal animation: bars draw in, diagonals shoot out from the
-   crossbar point, then the wordmark/meta fade in — matches the brand's
-   video sting. */
-.mark-bar {
-  transform: scaleX(0);
-  animation: mark-bar-in 0.5s cubic-bezier(.2,.8,.2,1) 0.1s forwards;
-}
-.mark-bar-l { transform-origin: 20.5px 68px; }
-.mark-bar-r { transform-origin: 80px 68px; }
-.mark-diag {
+/* Logo reveal animation: each tick draws up from its base, left then
+   right, then the wordmark/meta fade in — matches the brand's video sting. */
+.mark-tick {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
   transform: scaleY(0);
-  animation: mark-diag-in 0.6s cubic-bezier(.2,.8,.2,1) 0.45s forwards;
+  animation: mark-tick-in 0.55s cubic-bezier(.2,.8,.2,1) forwards;
 }
-.mark-diag-l { transform-origin: 29px 68px; }
-.mark-diag-r { transform-origin: 65px 68px; }
-@keyframes mark-bar-in { to { transform: scaleX(1); } }
-@keyframes mark-diag-in { to { transform: scaleY(1); } }
+.mark-tick-l { animation-delay: 0.1s; }
+.mark-tick-r { animation-delay: 0.35s; }
+@keyframes mark-tick-in { to { transform: scaleY(1); } }
 
 .reveal-fade {
   opacity: 0;
@@ -246,7 +240,7 @@ a { color: inherit; text-decoration: none; }
 @keyframes reveal-fade-in { to { opacity: 1; } }
 
 @media (prefers-reduced-motion: reduce) {
-  .mark-bar, .mark-diag, .reveal-fade { animation: none; transform: none; opacity: 1; }
+  .mark-tick, .reveal-fade { animation: none; transform: none; opacity: 1; }
 }
 
 .cover-bottom {
@@ -341,6 +335,57 @@ a { color: inherit; text-decoration: none; }
 }
 .building-badge p { margin: 0; font-size: 0.95rem; line-height: 1.4; }
 
+/* ============================================================
+   Buildings slider (A / B / C tabs)
+   ============================================================ */
+.buildings-tabs {
+  position: sticky;
+  top: 56px;
+  z-index: 20;
+  display: flex;
+  background: var(--black);
+}
+.buildings-tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1.1rem 1.5rem;
+  background: none;
+  border: 0;
+  border-bottom: 3px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.55);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.82rem;
+  text-align: left;
+  cursor: pointer;
+  transition: color .2s, border-color .2s, background .2s;
+}
+.buildings-tab span {
+  font-size: 0.66rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  opacity: 0.75;
+}
+.buildings-tab:hover { color: var(--white); }
+.buildings-tab.is-active { color: var(--green); border-bottom-color: var(--green); background: rgba(74,255,28,0.08); }
+
+.building-slide[hidden] { display: none; }
+.building-slide.is-active { animation: building-slide-in 0.45s ease; }
+@keyframes building-slide-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .building-slide.is-active { animation: none; }
+}
+@media (max-width: 720px) {
+  .buildings-tabs { flex-direction: column; }
+  .buildings-tab span { display: none; }
+}
+
 .location-map-section { align-items: flex-start; }
 .map-badges {
   margin: clamp(1.5rem, 5vw, 3.5rem);
@@ -407,19 +452,31 @@ a { color: inherit; text-decoration: none; }
    Divider (space / place)
    ============================================================ */
 .divider {
+  position: relative;
   min-height: 60vh;
-  background-size: cover;
-  background-position: center;
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  overflow: hidden;
+}
+.divider-bg {
+  position: absolute;
+  inset: -6% -4%;
+  background-size: cover;
+  background-position: center;
+  filter: url(#flag-ripple);
 }
 .divider-word {
+  position: relative;
+  z-index: 1;
   font-family: var(--font-display);
   font-weight: 800;
   color: var(--green);
   font-size: clamp(2.5rem, 6vw, 5rem);
   margin: 0 clamp(1.5rem, 6vw, 5rem);
+}
+@media (prefers-reduced-motion: reduce) {
+  .divider-bg { filter: none; }
 }
 
 /* ============================================================
