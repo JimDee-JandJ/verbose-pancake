@@ -575,7 +575,7 @@ a { color: inherit; text-decoration: none; }
   padding: 0; margin: -1px; overflow: hidden;
   clip: rect(0,0,0,0); white-space: nowrap; border: 0;
 }
-.occupiers-headline { display: flex; align-items: flex-end; padding: 1rem; }
+.occupiers-headline { display: flex; align-items: center; justify-content: center; text-align: center; padding: 1rem; }
 .occupiers-headline .display { line-height: 0.95; }
 
 /* ============================================================
