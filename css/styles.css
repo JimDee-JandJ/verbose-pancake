@@ -315,6 +315,50 @@ a { color: inherit; text-decoration: none; }
   align-items: flex-end;
   color: var(--white);
 }
+.hero-photo .caption {
+  position: absolute;
+  left: var(--section-pad);
+  bottom: 1.5rem;
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  opacity: 0.8;
+  max-width: 40ch;
+  margin: 0;
+}
+.building-badge {
+  background: var(--white);
+  color: var(--black);
+  margin: clamp(1.5rem, 5vw, 3.5rem);
+  padding: 1.5rem 2rem;
+  max-width: 420px;
+}
+.building-badge h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.2rem, 4.4vw, 3.4rem);
+  margin: 0 0 0.4rem;
+  letter-spacing: -0.02em;
+}
+.building-badge p { margin: 0; font-size: 0.95rem; line-height: 1.4; }
+
+.location-map-section { align-items: flex-start; }
+.map-badges {
+  margin: clamp(1.5rem, 5vw, 3.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: auto;
+  margin-bottom: clamp(1.5rem, 5vw, 3.5rem);
+}
+.badge-green, .badge-black {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  padding: 0.6rem 1rem;
+  width: fit-content;
+}
+.badge-green { background: var(--green); color: var(--black); }
+.badge-black { background: var(--black); color: var(--white); }
+
 .welcome-cta {
   position: absolute;
   left: var(--section-pad);
