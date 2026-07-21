@@ -91,7 +91,7 @@
   /* ---------- Parallax drift on hero photos ---------- */
   (function parallax() {
     if (reduceMotion) return;
-    var els = Array.prototype.slice.call(document.querySelectorAll('.hero-photo, .divider'));
+    var els = Array.prototype.slice.call(document.querySelectorAll('.hero-photo, .divider-bg'));
     if (!els.length) return;
     var ticking = false;
     function update() {
@@ -146,6 +146,47 @@
       });
     }, { threshold: 0.4 });
     io.observe(group);
+  })();
+
+  /* ---------- Buildings slider (A / B / C tabs) ---------- */
+  (function buildingsSlider() {
+    var tabsBar = document.getElementById('buildingsTabs');
+    if (!tabsBar) return;
+    var tabs = Array.prototype.slice.call(tabsBar.querySelectorAll('.buildings-tab'));
+    var slides = document.querySelectorAll('.building-slide');
+
+    function activate(building, opts) {
+      tabs.forEach(function (t) {
+        var active = t.getAttribute('data-building') === building;
+        t.classList.toggle('is-active', active);
+        t.setAttribute('aria-selected', String(active));
+        t.tabIndex = active ? 0 : -1;
+      });
+      slides.forEach(function (s) {
+        var active = s.getAttribute('data-building') === building;
+        s.classList.toggle('is-active', active);
+        if (active) s.removeAttribute('hidden'); else s.setAttribute('hidden', '');
+      });
+      if (opts && opts.scroll) {
+        tabsBar.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+      }
+    }
+
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        activate(tab.getAttribute('data-building'), { scroll: true });
+      });
+    });
+
+    tabsBar.addEventListener('keydown', function (e) {
+      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+      var idx = tabs.indexOf(document.activeElement);
+      if (idx === -1) return;
+      e.preventDefault();
+      var next = e.key === 'ArrowRight' ? (idx + 1) % tabs.length : (idx - 1 + tabs.length) % tabs.length;
+      tabs[next].focus();
+      activate(tabs[next].getAttribute('data-building'));
+    });
   })();
 
   /* Belt-and-braces: if this script fails to even reach this point (syntax
