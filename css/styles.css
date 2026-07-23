@@ -218,11 +218,13 @@ a { color: inherit; text-decoration: none; }
   align-items: center;
   justify-content: center;
   min-height: 30vh;
+  animation: cover-mark-out 0.9s ease 2s forwards;
 }
 .cover-mark svg { width: clamp(120px, 16vw, 220px); height: auto; overflow: visible; }
 
 /* Logo reveal animation: each tick draws up from its base, left then
-   right, then the wordmark/meta fade in — matches the brand's video sting. */
+   right, then the wordmark/meta fade in, then the whole mark dissolves
+   away so the video underneath comes through — matches the brand's video sting. */
 .mark-tick {
   transform-box: fill-box;
   transform-origin: 50% 100%;
@@ -232,6 +234,7 @@ a { color: inherit; text-decoration: none; }
 .mark-tick-l { animation-delay: 0.1s; }
 .mark-tick-r { animation-delay: 0.35s; }
 @keyframes mark-tick-in { to { transform: scaleY(1); } }
+@keyframes cover-mark-out { to { opacity: 0; } }
 
 .reveal-fade {
   opacity: 0;
@@ -241,6 +244,7 @@ a { color: inherit; text-decoration: none; }
 
 @media (prefers-reduced-motion: reduce) {
   .mark-tick, .reveal-fade { animation: none; transform: none; opacity: 1; }
+  .cover-mark { animation: none; opacity: 1; }
 }
 
 .cover-bottom {
